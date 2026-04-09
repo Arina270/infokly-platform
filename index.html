@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///Users/arinashabalina/Downloads/index_1.html?session=myy4bj -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>infokly — Collaborative Coding Platform</title>
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 32 32&#39;&gt;&lt;rect width=&#39;32&#39; height=&#39;32&#39; rx=&#39;6&#39; fill=&#39;%23CCFF00&#39;/&gt;&lt;text x=&#39;4&#39; y=&#39;24&#39; font-size=&#39;22&#39; font-family=&#39;monospace&#39; font-weight=&#39;bold&#39;&gt;ik&lt;/text&gt;&lt;/svg&gt;">
+<link href="./index_files/css2" rel="stylesheet">
+<link rel="stylesheet" href="./index_files/codemirror.min.css">
+<link rel="stylesheet" href="./index_files/material-darker.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--l:#CCFF00;--bg:#0a0a0a;--bg2:#111;--bg3:#141414;--bg4:#1a1a1a;--bd:#222;--t:#e0e0e0;--m:#888;--d:#555;--dk:#444;--er:#FF6B6B;--cy:#00CCFF;--f:'JetBrains Mono','Fira Code',monospace}
+body{font-family:var(--f);background:var(--bg);color:var(--t);height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.top{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:var(--bg2);border-bottom:1px solid var(--bd);flex-shrink:0}
+.logo{font-weight:800;font-style:italic;font-size:18px;color:#fff}
+.badge{background:var(--l);color:#000;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;margin-left:8px}
+.sess{display:flex;align-items:center;gap:8px;background:var(--bg4);padding:4px 12px;border-radius:6px;border:1px solid #333;font-size:11px;color:var(--m)}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--l);animation:p 2s infinite;display:inline-block}
+.sbtn{background:none;border:1px solid #444;color:var(--m);padding:3px 10px;border-radius:4px;font-size:10px;cursor:pointer;font-family:var(--f)}
+.sbtn:hover{border-color:var(--l);color:#fff}
+.exs{display:flex;gap:5px}
+.exb{background:var(--bg4);border:1px solid #333;color:#aaa;padding:4px 9px;border-radius:4px;font-size:11px;cursor:pointer;font-family:var(--f)}
+.exb:hover{border-color:var(--l);color:#fff}
+.mn{display:flex;flex:1;overflow:hidden}
+.ep{flex:1;display:flex;flex-direction:column;border-right:1px solid var(--bd);min-width:0}
+.eh{display:flex;align-items:center;justify-content:space-between;padding:6px 12px;background:var(--bg3);border-bottom:1px solid var(--bd);flex-shrink:0}
+.fi{display:flex;align-items:center;gap:8px;font-size:12px}
+.rb{background:var(--l);color:#000;border:none;padding:5px 16px;border-radius:5px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--f);display:flex;align-items:center;gap:6px}
+.rb:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.rb:disabled{background:#333;cursor:wait;filter:none;transform:none}
+.ew{flex:1;overflow:hidden}
+.CodeMirror{height:100%!important;font-family:var(--f)!important;font-size:13px!important;line-height:20px!important;background:var(--bg)!important}
+.CodeMirror-gutters{background:#0d0d0d!important;border-right:1px solid var(--bg4)!important}
+.CodeMirror-linenumber{color:var(--dk)!important}
+.CodeMirror-cursor{border-left-color:var(--l)!important}
+.CodeMirror-selected{background:rgba(204,255,0,.12)!important}
+.CodeMirror-activeline-background{background:rgba(204,255,0,.03)!important}
+.CodeMirror-activelinenumber{color:var(--m)!important}
+.op{flex:1;display:flex;flex-direction:column;min-width:0}
+.ot{display:flex;padding:0 12px;background:var(--bg3);border-bottom:1px solid var(--bd);flex-shrink:0}
+.tb{background:none;border:none;border-bottom:2px solid transparent;color:#666;padding:8px 14px;font-size:12px;cursor:pointer;font-family:var(--f)}
+.tb.a{border-bottom-color:var(--l);color:#fff}
+.tb:hover{color:#aaa}
+.tl{background:var(--l);color:#000;font-size:9px;padding:0 4px;border-radius:3px;font-weight:700;margin-left:4px;display:none}
+.oc{flex:1;overflow:auto}
+.ox{margin:0;padding:12px;font-size:13px;line-height:20px;font-family:var(--f);white-space:pre-wrap;word-break:break-word;color:var(--d)}
+.ox.ok{color:var(--l)}.ox.er{color:var(--er)}
+.tx{width:100%;height:100%;display:none;align-items:center;justify-content:center;padding:12px}
+.tx svg{width:100%;height:100%;border-radius:8px}
+.sb{display:flex;align-items:center;justify-content:space-between;padding:4px 12px;background:var(--bg2);border-top:1px solid var(--bd);font-size:10px;color:var(--d);flex-shrink:0}
+.ld{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .4s}
+.ld.h{opacity:0;pointer-events:none}
+.sp{width:36px;height:36px;border:3px solid #333;border-top-color:var(--l);border-radius:50%;animation:s .7s linear infinite}
+.to{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--l);color:#000;padding:6px 16px;border-radius:6px;font-size:12px;font-weight:700;z-index:2000;opacity:0;transition:opacity .3s;pointer-events:none}
+.to.v{opacity:1}
+@keyframes s{to{transform:rotate(360deg)}}@keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+@media(max-width:800px){.mn{flex-direction:column}.ep{border-right:none;border-bottom:1px solid var(--bd);max-height:50vh}.exs,.sess{display:none}}
+</style>
+</head>
+<body>
+<div class="ld h" id="ld"><div style="font-size:28px;font-weight:800;font-style:italic;color:#fff;margin-bottom:20px">infokly</div><div class="sp"></div><div style="margin-top:14px;color:var(--m);font-size:12px">Загрузка Python в браузер...</div><div style="margin-top:4px;color:var(--dk);font-size:10px">Pyodide (WebAssembly) · ~5 сек</div></div>
+<div class="to" id="to"></div>
+<div class="top">
+<div style="display:flex;align-items:center"><span class="logo">infokly</span><span class="badge">BETA</span></div>
+<div class="sess"><span class="dot"></span><span id="sl">session/myy4bj</span><span style="color:var(--d)">·</span><span id="pl" style="color: var(--m);">1 онлайн</span><button class="sbtn" onclick="share()">📋 Копировать ссылку</button></div>
+<div class="exs" id="eb"><button class="exb">🐢 Спираль</button><button class="exb">⭐ Звезда</button><button class="exb">🌈 Круги</button><button class="exb">📐 Фрактал</button><button class="exb">🔢 Hello</button></div>
+</div>
+<div class="mn">
+<div class="ep"><div class="eh"><div class="fi"><span style="color:var(--l)">●</span><span style="color:var(--m)">main.py</span><span style="font-size:10px;color:var(--d);background:var(--bg4);padding:1px 6px;border-radius:3px">Python 3.11</span></div><button class="rb" id="rb" onclick="run()"><span id="rl">▶ Запустить</span><span style="font-size: 9px; opacity: 0.6; display: inline;" id="rh">⌘↵</span></button></div><div class="ew"><textarea id="ca" style="display: none;"></textarea><div class="CodeMirror cm-s-material-darker" translate="no" style="clip-path: inset(0px);"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 34px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; min-height: 1em; outline: none;"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="right: 0px; left: 30px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: -6px; border-right-width: 44px; min-height: 268px; min-width: 420.438px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>13</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 20px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -30px; width: 30px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">turtle</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">t</span> <span class="cm-operator">=</span> <span class="cm-variable">turtle</span>.<span class="cm-property">Turtle</span>()</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">t</span>.<span class="cm-property">speed</span>(<span class="cm-number">0</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">colors</span> <span class="cm-operator">=</span> [<span class="cm-string">"#CCFF00"</span>, <span class="cm-string">"#00CCFF"</span>, <span class="cm-string">"#FF6B6B"</span>, <span class="cm-string">"#FFD93D"</span>]</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">i</span> <span class="cm-keyword">in</span> <span class="cm-builtin">range</span>(<span class="cm-number">36</span>):</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-variable">t</span>.<span class="cm-property">color</span>(<span class="cm-variable">colors</span>[<span class="cm-variable">i</span> <span class="cm-operator">%</span> <span class="cm-number">4</span>])</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-variable">t</span>.<span class="cm-property">forward</span>(<span class="cm-number">100</span> <span class="cm-operator">+</span> <span class="cm-variable">i</span> <span class="cm-operator">*</span> <span class="cm-number">3</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-variable">t</span>.<span class="cm-property">right</span>(<span class="cm-number">91</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-string">"Готово! Спираль нарисована \u{1F422}"</span>)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 44px; width: 1px; border-bottom: 0px solid transparent; top: 268px;"></div><div class="CodeMirror-gutters" style="height: 312px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div></div></div></div></div></div>
+<div class="op"><div class="ot"><button class="tb a" id="tO" onclick="st(&#39;o&#39;)">Вывод</button><button class="tb" id="tT" onclick="st(&#39;t&#39;)">🐢 Turtle <span class="tl" id="tL">LIVE</span></button></div><div class="oc"><pre class="ox ok" id="oT">✅ Python загружен. Нажмите ▶ Запустить или Ctrl+Enter
+</pre><div class="tx" id="tB"><div style="text-align:center;color:var(--dk)"><div style="font-size:48px;margin-bottom:8px">🐢</div><div style="font-size:12px">Запустите код с import turtle</div></div></div></div></div>
+</div>
+<div class="sb"><div><span>Python 3.11 (Pyodide/WASM)</span><span style="margin:0 6px">·</span><span id="lc">13 строк</span><span style="margin:0 6px">·</span><span>real-time collaboration</span></div><div>infokly.ru · <span style="color:var(--l)">Collaborative Coding Platform</span></div></div>
+<script src="./index_files/codemirror.min.js"></script>
+<script src="./index_files/python.min.js"></script>
+<script src="./index_files/matchbrackets.min.js"></script>
+<script src="./index_files/closebrackets.min.js"></script>
+<script src="./index_files/active-line.min.js"></script>
+<script src="./index_files/pyodide.js"></script>
+<script>
+const DC=`import turtle\n\nt = turtle.Turtle()\nt.speed(0)\n\ncolors = ["#CCFF00", "#00CCFF", "#FF6B6B", "#FFD93D"]\n\nfor i in range(36):\n    t.color(colors[i % 4])\n    t.forward(100 + i * 3)\n    t.right(91)\n\nprint("Готово! Спираль нарисована \\u{1F422}")`;
+const EX=[
+{n:"🐢 Спираль",c:DC},
+{n:"⭐ Звезда",c:`import turtle\n\nt = turtle.Turtle()\nt.speed(0)\nt.color("#CCFF00")\nt.width(3)\n\nfor i in range(5):\n    t.forward(200)\n    t.right(144)\n\nprint("Звезда готова!")`},
+{n:"🌈 Круги",c:`import turtle\n\nt = turtle.Turtle()\nt.speed(0)\nt.width(2)\ncolors = ["#FF6B6B","#FFD93D","#CCFF00","#00CCFF","#CC99FF","#FF99CC"]\nfor i in range(6):\n    t.color(colors[i])\n    t.circle(50 + i * 20)\n    t.right(60)\nprint("Радужные круги!")`},
+{n:"📐 Фрактал",c:`import turtle\n\nt = turtle.Turtle()\nt.speed(0)\nt.color("#00CCFF")\nt.width(1)\n\ndef koch(t, length, depth):\n    if depth == 0:\n        t.forward(length)\n    else:\n        koch(t, length/3, depth-1)\n        t.left(60)\n        koch(t, length/3, depth-1)\n        t.right(120)\n        koch(t, length/3, depth-1)\n        t.left(60)\n        koch(t, length/3, depth-1)\n\nt.penup()\nt.goto(-150, 80)\nt.pendown()\nfor _ in range(3):\n    koch(t, 300, 3)\n    t.right(120)\nprint("Снежинка Коха!")`},
+{n:"🔢 Hello",c:`name = "infokly"\nprint(f"Привет из {name}!")\nprint()\nfor i in range(1, 6):\n    print("*" * i, f"Уровень {i}")\nprint()\nprint("Python работает прямо в браузере!")\nprint("Через Pyodide (WebAssembly)")`}
+];
+const TS=`
+import sys,json
+_tc=[]
+class _FT:
+ def forward(s,d):_tc.append({"t":"f","v":d})
+ def fd(s,d):s.forward(d)
+ def backward(s,d):s.forward(-d)
+ def bk(s,d):s.backward(d)
+ def right(s,a):_tc.append({"t":"r","v":a})
+ def rt(s,a):s.right(a)
+ def left(s,a):_tc.append({"t":"l","v":a})
+ def lt(s,a):s.left(a)
+ def penup(s):_tc.append({"t":"pu"})
+ def pu(s):s.penup()
+ def pendown(s):_tc.append({"t":"pd"})
+ def pd(s):s.pendown()
+ def speed(s,v=None):return 0
+ def color(s,c):_tc.append({"t":"c","v":c})
+ def pencolor(s,c):s.color(c)
+ def width(s,w):_tc.append({"t":"w","v":w})
+ def pensize(s,w):s.width(w)
+ def goto(s,x,y=None):
+  if y is None:x,y=x
+  _tc.append({"t":"g","x":x,"y":y})
+ def setpos(s,x,y=None):s.goto(x,y)
+ def setposition(s,x,y=None):s.goto(x,y)
+ def circle(s,r,ext=360,steps=None):
+  if steps is None:steps=max(int(abs(ext)/5),12)
+  sa=ext/steps;sl=2*3.14159265*r*abs(sa)/360
+  for _ in range(steps):
+   s.forward(sl)
+   if r>0:s.left(sa)
+   else:s.right(abs(sa))
+ def hideturtle(s):pass
+ def ht(s):pass
+ def showturtle(s):pass
+ def st(s):pass
+ def done(s):pass
+ def shape(s,v=None):pass
+ def fillcolor(s,c=None):pass
+ def begin_fill(s):pass
+ def end_fill(s):pass
+ def home(s):s.goto(0,0)
+ def clear(s):pass
+ def reset(s):
+  global _tc;_tc=[];s.home()
+class _FS:
+ def bgcolor(s,c=None):pass
+ def setup(s,*a,**k):pass
+ def title(s,t):pass
+ def tracer(s,*a):pass
+ def update(s):pass
+ def exitonclick(s):pass
+ def mainloop(s):pass
+ def bye(s):pass
+ def colormode(s,m=None):return 255
+class _TM:
+ Turtle=_FT;Screen=_FS
+ def Turtle(s):return _FT()
+ def Screen(s):return _FS()
+ def done(s):pass
+ def mainloop(s):pass
+ def exitonclick(s):pass
+sys.modules['turtle']=_TM()
+def _gtc():return json.dumps(_tc)
+`;
+
+// Session
+let sid=new URLSearchParams(location.search).get("session");
+if(!sid){sid=Math.random().toString(36).slice(2,8);history.replaceState({},"","?session="+sid)}
+document.getElementById("sl").textContent="session/"+sid;
+
+function share(){
+navigator.clipboard.writeText(location.href).then(()=>{const t=document.getElementById("to");t.textContent="✅ Ссылка скопирована! Отправьте ученику";t.classList.add("v");setTimeout(()=>t.classList.remove("v"),2000)})
+}
+
+// Editor
+const ed=CodeMirror.fromTextArea(document.getElementById("ca"),{mode:"python",theme:"material-darker",lineNumbers:true,matchBrackets:true,autoCloseBrackets:true,styleActiveLine:true,indentUnit:4,tabSize:4,indentWithTabs:false,extraKeys:{"Cmd-Enter":()=>run(),"Ctrl-Enter":()=>run(),"Tab":cm=>cm.execCommand("indentMore"),"Shift-Tab":cm=>cm.execCommand("indentLess")}});
+ed.setValue(DC);
+setInterval(()=>{document.getElementById("lc").textContent=ed.lineCount()+" строк"},500);
+
+// BroadcastChannel collab
+const ch=new BroadcastChannel("infokly-"+sid);
+let sup=false,pid=Math.random().toString(36).slice(2,8),hb={};
+ed.on("change",()=>{if(!sup)ch.postMessage({t:"c",f:pid,v:ed.getValue()})});
+ch.onmessage=e=>{const d=e.data;if(d.t==="c"&&d.f!==pid){const c=ed.getCursor(),s=ed.getScrollInfo();sup=true;ed.setValue(d.v);ed.setCursor(c);ed.scrollTo(s.left,s.top);sup=false}if(d.t==="p"){hb[d.f]=Date.now();ch.postMessage({t:"q",f:pid})}if(d.t==="q")hb[d.f]=Date.now()};
+setInterval(()=>{ch.postMessage({t:"p",f:pid});const n=Date.now();Object.keys(hb).forEach(k=>{if(n-hb[k]>5e3)delete hb[k]});const c=Object.keys(hb).length+1;document.getElementById("pl").textContent=c+" онлайн";document.getElementById("pl").style.color=c>1?"var(--l)":"var(--m)"},2e3);
+
+// Examples
+const eb=document.getElementById("eb");
+EX.forEach(x=>{const b=document.createElement("button");b.className="exb";b.textContent=x.n;b.onclick=()=>{ed.setValue(x.c);document.getElementById("tB").innerHTML='<div style="text-align:center;color:var(--dk)"><div style="font-size:48px;margin-bottom:8px">🐢</div><div style="font-size:12px">Запустите код с import turtle</div></div>';document.getElementById("tL").style.display="none";document.getElementById("oT").textContent="";document.getElementById("oT").className="ox"};eb.appendChild(b)});
+
+// Python
+let py=null,busy=false;
+async function init(){
+py=await loadPyodide({indexURL:"https://cdn.jsdelivr.net/pyodide/v0.24.1/full/"});
+await py.runPythonAsync(TS);
+document.getElementById("rb").disabled=false;
+document.getElementById("rl").textContent="▶ Запустить";
+document.getElementById("rh").style.display="inline";
+document.getElementById("oT").textContent="✅ Python загружен. Нажмите ▶ Запустить или Ctrl+Enter\n";
+document.getElementById("oT").className="ox ok";
+document.getElementById("ld").classList.add("h");
+}
+init().catch(e=>{document.getElementById("oT").textContent="❌ "+e.message;document.getElementById("oT").className="ox er";document.getElementById("ld").classList.add("h")});
+
+async function run(){
+if(!py||busy)return;busy=true;
+const b=document.getElementById("rb"),l=document.getElementById("rl");
+b.disabled=true;l.textContent="⚡ Выполняется...";
+try{
+await py.runPythonAsync("_tc=[]");
+await py.runPythonAsync("import sys,io;_o=io.StringIO();sys.stdout=_o;sys.stderr=_o");
+await py.runPythonAsync(ed.getValue());
+const out=await py.runPythonAsync("_o.getvalue()");
+const cmds=JSON.parse(await py.runPythonAsync("_gtc()"));
+await py.runPythonAsync("sys.stdout=sys.__stdout__;sys.stderr=sys.__stderr__");
+document.getElementById("oT").textContent=out||"(нет вывода)";
+document.getElementById("oT").className="ox ok";
+if(cmds.length>0){rT(document.getElementById("tB"),cmds);document.getElementById("tL").style.display="inline";st("t")}else st("o");
+}catch(e){try{await py.runPythonAsync("sys.stdout=sys.__stdout__;sys.stderr=sys.__stderr__")}catch(_){}document.getElementById("oT").textContent="❌ "+e.message;document.getElementById("oT").className="ox er";st("o")}
+b.disabled=false;l.textContent="▶ Запустить";busy=false;
+}
+
+// Turtle
+function rT(el,cmds){let x=250,y=250,a=0,p=true,c="#CCFF00",w=2;const sg=[];cmds.forEach(d=>{if(d.t==="f"){const r=(a-90)*Math.PI/180,nx=x+d.v*Math.cos(r),ny=y+d.v*Math.sin(r);if(p)sg.push(`<line x1="${x}" y1="${y}" x2="${nx}" y2="${ny}" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>`);x=nx;y=ny}else if(d.t==="r")a+=d.v;else if(d.t==="l")a-=d.v;else if(d.t==="pu")p=false;else if(d.t==="pd")p=true;else if(d.t==="c")c=d.v;else if(d.t==="w")w=d.v;else if(d.t==="g"){const nx=d.x+250,ny=250-d.y;if(p)sg.push(`<line x1="${x}" y1="${y}" x2="${nx}" y2="${ny}" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>`);x=nx;y=ny}});el.innerHTML=`<svg viewBox="0 0 500 500" style="background:#111;border-radius:8px">${sg.join("")}<circle cx="${x}" cy="${y}" r="4" fill="#CCFF00"/></svg>`}
+
+// Tabs
+function st(t){const o=document.getElementById("oT"),u=document.getElementById("tB"),tO=document.getElementById("tO"),tT=document.getElementById("tT");if(t==="o"){o.style.display="block";u.style.display="none";tO.classList.add("a");tT.classList.remove("a")}else{o.style.display="none";u.style.display="flex";tO.classList.remove("a");tT.classList.add("a")}}
+</script>
+
+
+</body></html>
